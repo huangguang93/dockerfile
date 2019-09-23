@@ -7,6 +7,8 @@ RUN set -xe \
   && ln -s /usr/bin/pip3 /usr/bin/pip \
   && ln -s /usr/bin/python3.6 /usr/bin/python \
   && echo "==> Clean up..."  \ 
+  && apt-get --purge autoremove -y python3-dev libmysqlclient-dev gcc  \
+  && rm -rf /root/.cache && apt-get autoclean  \
   && apt-get clean \   
   && rm -rf /var/lib/apt/lists/* /var/cache/apk/* \
   && > /var/log/bootstrap.log  && > /var/log/dpkg.log && > /var/log/alternatives.log
